@@ -1,0 +1,193 @@
+@font-face
+{
+    font-family:"Poppins-Regular";
+    src: url("../police/Poppins-Regular.ttf");
+    font-family: "Raleway-Regular";
+    src: url("../police/Raleway-Regular.ttf")
+}
+
+body {line-height:1.5;
+    font-family: "Poppins-Regular", Times, serif, arial, sans-serif;margin: 0px;
+    background-color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    padding: 0;
+    box-sizing: border-box;
+    
+    }
+
+
+
+
+/*pub*/
+a.lien-epub{
+    text-decoration: none;
+}
+.pub{
+    background-image: url("../background/font_pub.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    max-height: 100%;
+    height: 100%;
+    width: 100%;
+    margin-top: 1%;
+    
+    }
+
+.epub{
+    font-family: "Raleway-Regular";
+    margin-left: 13%;
+    padding-top: 17.5%
+
+    }
+
+
+#buy{
+    font-size:280%;    
+    margin-bottom: 0.99%
+
+    }
+
+#A-buy{
+    color:#999;
+    margin-top: 0.99%; 
+    font-size: 26px;
+
+
+    }
+.shop-now{
+    background-color:black;
+    color:white;
+    width:200px;
+    margin-bottom: 18%;
+
+    }
+.stop{
+    color:blanchedalmond
+   
+}
+#shop{
+    font-size: 1.2em;   
+    padding-left: 21%;
+    padding-top: 6%;    
+    padding-right: 6%;
+    padding-bottom: 6%; 
+
+}
+a#bu1{
+    text-decoration: none;
+}
+.shop-now:hover{
+    background-color: white;
+    color:black ;
+    width:15%;  
+}
+/*fin pub*/
+
+
+/*artile*/
+.col-1{
+    text-align: center;
+}
+.popular{
+    padding:80px 40px;
+    position: relative;
+    max-width: 1900px;
+    margin: auto;
+    overflow: hidden;
+}
+#t-popu{
+    font-size: 150%;
+    margin:0;
+    padding-bottom: 15px;   
+    letter-spacing: 0.4px;
+    margin-left: 11%;
+}
+.text-popu{
+    margin-left: auto;
+    margin-top: auto;   
+    left: auto;
+    right:auto;
+    width: 100%;
+}
+.article{
+    display: block;
+    margin-left: auto;
+    margin-top: auto;   
+    top: auto;
+    left:auto;
+}
+.lien-ban{
+    text-decoration: none;
+    color:black;
+}
+table.inline{
+    border:0.5px solid  rgb(247, 233, 233);
+    display:inline;
+}
+table:hover{
+    padding: 0.3% 0 03% 0;
+    box-shadow: 1px 1px 1px 1px  rgba(0,0,0,0.1);
+}
+.band-buy{
+    margin-top: 100%;
+    text-align: center;
+    font-family:"Raleway-Regular";
+}
+
+.ab{
+    padding: 2%;
+   margin:0 30% 0 30%; 
+    border: 0.5px solid black;
+    border-radius: 1em;
+    background-color: black;
+    color: aliceblue;
+    font-family:"Raleway-Regular"; 
+}
+
+.poliband{
+    font-size: 1em;
+    text-align: center;
+    color: black;
+}
+/*fin article*/
+
+/*pub sac*/
+.Areas-bag{
+    text-decoration: none;
+}
+.pub-bag{
+    background-image: url("../background/bag.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    max-height: 100%;
+    height: 100%;
+    
+    margin-top: 1%;
+    padding: 10% 0% 5% 10%;
+    margin: 0 auto;
+    color: black;
+
+}
+
+.paragraphe{
+    width: 22%;
+}
+/* fin pub sac*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+

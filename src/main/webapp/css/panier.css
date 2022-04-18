@@ -1,0 +1,134 @@
+@font-face
+{
+    font-family:"Poppins-Regular";
+    src: url("../police/Poppins-Regular.ttf");
+    font-family: "Raleway-Regular";
+    src: url("../police/Raleway-Regular.ttf")
+}
+
+body {line-height:1.5;
+    font-family: "Poppins-Regular", Times, serif, arial, sans-serif;
+    margin: 0px;
+    background-color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    padding: 0;
+    box-sizing: border-box;
+    
+    }
+
+/*panier*/
+h1{
+    text-align:center;
+    border-bottom: 1px solid gray;
+   padding:1%;
+}
+
+.panier{
+    margin-right: 17%;
+    margin-top: 2%;
+    margin-left: 17%;
+
+
+}
+img{
+    width: 55%;
+    text-align: center;
+}
+.prix{
+    padding-left: 16.5%;
+}
+.qté{
+    padding-left: 11%;
+}
+.prixx{
+    padding-left: 4%;
+    width: 30%;
+}
+input{
+    width: 40%
+
+}
+.image{
+    text-align: center;
+}
+.produit{
+    padding-right: 11%;
+}
+.article-color,.article-color1,.article-color2{
+    margin-bottom: 1%;
+}
+.article-color{
+color: brown;
+}
+.article-color1{
+    color: #808000;
+ }
+ .article-color2{
+    color: gold;
+ }
+.delete{
+margin-top: 1%;
+color: rgba(128, 128, 128, 1);
+}
+.delete:hover{
+    color:  rgba(0, 17, 36, 1);
+}
+.art-name{
+    margin-bottom: 27%;
+}
+.quantité{
+    text-align: center;
+}
+.pro-qté-prix{
+    border-bottom: 1px solid gray;
+}
+.hr-margin{
+    padding-left: 7.2%;
+}
+
+/*fin panier*/
+
+/*total*/
+#total{
+    padding-left: 55%;
+}
+#p-total{
+    padding-left:4%; 
+}
+button{
+    background-color: gray;
+
+}
+span{
+    color: white;
+}
+
+.total-p{
+    font-size: 120%;
+}
+/*fin*/
+
+
+
+/*<!--30%off monochest n+1page-->*/
+.monochest{
+    margin-top: 3%;
+    background-image: url("../background/red.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    padding: 11% 0 8% 0;
+}
+.text_monochest{
+    margin-left: 8%;
+    width: 20%;
+}
+#t-monochest{
+    margin-top: 15%;
+    font-size: 1.1em;   
+}
+
+
+

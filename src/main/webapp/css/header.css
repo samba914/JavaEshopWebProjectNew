@@ -1,0 +1,65 @@
+
+
+/* header*/
+
+div.promo {background-color: black;
+         
+            }
+p#promo {color: rgb(255, 255, 255);
+        text-align:center;
+        text-transform: uppercase;
+        margin-top: 0;
+        font-size: 14px;
+          font-weight: 400;
+          height: 12px;
+          line-height: 24px;
+          letter-spacing: 1.1px;
+         }
+a#promo1{color:white;}
+.logo{align-self: center;
+    width: 10%;
+    height: 10%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    }
+.nav{
+    align-items: center;
+    margin-top: 1%;
+   
+    
+    }
+.lnav{
+    text-decoration: none;
+    color:black;
+    font-family: "Raleway-Regular";
+    margin: 3%;
+
+    
+   
+   
+        }
+
+.lvnav1{text-align:center;
+    
+
+    }
+
+a.lnav:hover {
+        color: #ffa726;
+    }
+
+#connect{
+    float:right;
+    margin-left:01%;
+    margin-right: 01%;
+    width:1.5% ;
+    height:02% ;
+        }
+
+img#panier{
+    float:right;
+    width:1.5% ;
+    height:01% ;
+    }
+/*fin header*/

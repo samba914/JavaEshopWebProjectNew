@@ -1,0 +1,126 @@
+@font-face
+{
+    font-family:"Poppins-Regular";
+    src: url("../police/Poppins-Regular.ttf");
+    font-family: "Raleway-Regular";
+    src: url("../police/Raleway-Regular.ttf")
+}
+
+body {line-height:1.5;
+    font-family: "Poppins-Regular", Times, serif, arial, sans-serif;margin: 0px;
+    background-color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    padding: 0;
+    box-sizing: border-box;
+    
+    }
+
+
+
+/*pub*/
+    .pub{
+        background-image: url("../background/shop_pub.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        max-height: 100%;
+        height: 100%;
+        margin-top: 1%;
+        padding: 10%
+        
+        }
+    .t-pub{
+        color: white;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    #text-pub{
+        font-size: 220%;
+        margin-bottom: 0.5%;
+    }
+    p#new{
+        margin-top: 0;
+    }
+    /* fin pub*/
+
+    /*artile*/
+.ligne{
+    text-align: center;
+    margin-bottom: 0.5%;
+}
+.col-1{
+    text-align: center;
+}
+.popular{
+    padding:80px 40px;
+    position: relative;
+    max-width: 1900px;
+    margin: auto;
+    background-color: rgba(237, 237, 237, 0.81);
+    overflow: hidden;
+}
+
+
+.article{
+    display: block;
+    margin-left: auto;
+    margin-top: auto;   
+    top: auto;
+    left:auto;
+}
+.lien-ban{
+    text-decoration: none;
+    color:black;
+}
+table.inline{
+    border:0.5px solid  rgb(247, 233, 233);
+    display:inline;
+}
+table:hover{
+    padding: 03% 0 05% 0;
+    box-shadow: 1px 1px 1px 1px  rgba(0,0,0,0.2);
+}
+.band-buy{
+    margin-top: 100%;
+    text-align: center;
+    font-family:"Raleway-Regular";
+}
+.t-buy-now:hover{
+    background-color:rgba(0,0,0,0.85);
+    color: white;
+}
+.t-buy-now{
+    padding: 2%;
+   margin:0 30% 0 30%; 
+    border: 0.5px solid black;
+    border-radius: 2em;
+    
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 75% 
+}
+
+.poliband{
+    font-size: 1em;
+    text-align: center;
+    color: black;
+}
+/*fin article*/
+/*<!--30%off monochest n+1page-->*/
+.monochest{
+    background-image: url("../background/red.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    padding: 11% 0 8% 0;
+}
+.text_monochest{
+    margin-left: 8%;
+    width: 20%;
+}
+#t-monochest{
+    margin-top: 15%;
+    font-size: 1.1em;   
+}
+
+
