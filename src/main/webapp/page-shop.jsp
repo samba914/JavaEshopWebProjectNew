@@ -1,10 +1,4 @@
-<%-- 
-    Document   : page-shop
-    Created on : 15 janv. 2020, 15:14:28
-    Author     : p1812347
 
-    https://www.developpez.net/forums/d1533536/java/communaute-java/codes-sources-telecharger/implementation-d-panier/
---%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="business.model.Produit"%>
 <%@page import="java.util.List"%>
@@ -18,6 +12,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    	<script src="js/page-shop.js"></script>
         <link href="css/page-shop.css" rel="stylesheet" type="text/css"/>
         <title>Boutique</title>
     </head>
@@ -31,25 +27,23 @@
             </div>
         </div>
         <!--fin pub-->
-       <div class="serach"> <label><input type="text" placeholder="Faites votre recherche ici!"  ></label></div>
+       <div class="serach"> <label><input id="filterInput" type="text" placeholder="Faites votre recherche ici"  /></label></div>
        <!--article ban-->
     <div class="popular">
    
-        
-       
-        
         <% for(Produit produit: (List<Produit>) request.getAttribute("listeProduit")) { %>   
-            <div class="aticle">
+            <div class="article">
             <!--ban1-->
             
                 <div class="ligne">
-                  <table class="inline">  <form class="lien-ban" action="controller?page=page-shop&action=ajout" method="post">
+                  <table class="inline">  
+                  <form class="lien-ban" action="controller?page=page-shop&action=ajout" method="post">
                         <tr>
                             <td colspan="2"><img  class="band" src="<%="photoh/"+produit.getPhoto()%>" alt=""></td>
                                
                               </tr>
                               <tr class="poliband">
-                                  <td ><%=produit.getNom()%></td>
+                                  <td class="nomProduit" ><%=produit.getNom()%></td>
                                 <td>$<%=produit.getPrix()%></td>
                                  <input type="hidden" name="produit_panier" value=<%=produit.getId()%> />
                               </tr>
@@ -61,14 +55,12 @@
                              
                                
                               </tr>
-                        
-                    </table></form>
-           <%}%>
-                    
-                 
-                
+                        </form>
+                    </table>  
             </div>
         </div>
+          <%}%> 
+     </div>
         <!--fin article-->
 
 

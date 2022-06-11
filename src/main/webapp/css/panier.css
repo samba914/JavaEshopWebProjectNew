@@ -37,14 +37,17 @@ img{
     text-align: center;
 }
 .prix{
-    padding-left: 16.5%;
+    padding-left: 21.5%;
 }
 .qté{
     padding-left: 11%;
 }
 .prixx{
-    padding-left: 4%;
-    width: 30%;
+
+    width: 20%;
+}
+.totalProduit{
+	padding-left: 20%;
 }
 input{
     width: 40%

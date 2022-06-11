@@ -23,9 +23,10 @@ a#promo1{color:white;}
     margin-left: auto;
     margin-right: auto;
     }
-.nav{
+.navv{
     align-items: center;
     margin-top: 1%;
+    display:block;
    
     
     }
@@ -49,17 +50,13 @@ a.lnav:hover {
         color: #ffa726;
     }
 
-#connect{
+.link_Icon{
     float:right;
     margin-left:01%;
+    color:black;
     margin-right: 01%;
-    width:1.5% ;
-    height:02% ;
+
         }
 
-img#panier{
-    float:right;
-    width:1.5% ;
-    height:01% ;
-    }
+
 /*fin header*/

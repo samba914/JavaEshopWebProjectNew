@@ -3,6 +3,11 @@
     Created on : 15 janv. 2020, 15:14:15
     Author     : p1812347
 --%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="business.model.Produit"%>
+<%@page import="dao.ProduitDAO"%>
+<%@page import="dao.ConnectionDB"%>
+<%@page import="java.util.List"%>
 
 <%@
    include file ="Header.jsp"
@@ -42,67 +47,31 @@
         </div>
         <div class="aticle">
         <!--ban1-->
-            <div class="col-1">
-               <a class="lien-ban" href="#" ><table class="inline">
+            <div class="all_ban">
+            <%List<Produit> listeproduit = new ArrayList<>();
+			ProduitDAO produitDao = new ProduitDAO(ConnectionDB.getInstance());
+			listeproduit = produitDao.listeProduit();
+			%>
+           
+            <% for(Produit produit: listeproduit.subList(0,3)) { %> 
+               <a class="lien-ban" href="controller?page=page-shop" ><table class="inline">
                     <tr>
-                            <td colspan="2"><img  class="band" src="photoh/band_contemporary.jpg"  alt=""></td>
+                            <td colspan="2"><img  class="band" src="<%="photoh/"+produit.getPhoto()%>"   alt=""></td>
                         
                           </tr>
                           <tr class="poliband">
-                              <td >Contempory Leather Cuf</td>
-                            <td>$52</td>
-                            
+                               <td ><%=produit.getNom()%></td>
+                                <td>$<%=produit.getPrix()%></td>
                           </tr>
                           <tr >
                               
-                            <td class="band-buy" colspan="2">
-                                <p class="ab">Acheter</p>
-                            </td>
+                           
                            
                           </tr>
                     
                 </table></a>
                 
-                <!--ban2-->
-                <a class="lien-ban" href="#" ><table class="inline">
-                        <tr>
-                                <td colspan="2"><img  class="band" src="photoh/band_leather-deployant.jpg" alt=""></td>
-                               
-                              </tr>
-                              <tr class="poliband">
-                                  <td >Leather Deployant Band</td>
-                                <td>$65</td>
-                                
-                              </tr>
-                              <tr >
-                                  
-                                <td class="band-buy" colspan="2">
-                                    <p class="ab">Acheter</p>
-                                </td>
-                               
-                              </tr>
-                        
-                    </table></a>
-               <!--ban3--> 
-               <a class="lien-ban" href="#" ><table class="inline">
-                    <tr>
-                            <td colspan="2"><img  class="band" src="photoh/band_leather_band.jpg"  alt=""></td>
-                           
-                          </tr>
-                          <tr class="poliband">
-                              <td >Classic Leather Band</td>
-                            <td>$45</td>
-                            
-                          </tr>
-                          <tr >
-                              
-                            <td class="band-buy" colspan="2">
-                                <p class="ab">Acheter</p>
-                            </td>
-                           
-                          </tr>
-                    
-                </table></a>
+             <%}%>
             </div>
         </div>
     </div>

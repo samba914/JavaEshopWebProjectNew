@@ -17,6 +17,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+    	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    	<script src="js/panier.js"></script>
+    	
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
          <link href="css/panier.css" rel="stylesheet" type="text/css"/>
         <title>JSP Page</title>
@@ -27,14 +30,15 @@
     <div class="panier">
         <h1>Panier</h1>
         <%if(((Map<Integer, Integer>) session.getAttribute("panier")).size()>0){%>
-        <form method="post" action="controller?page=AjoutCommande">
+        <form id="formPanier" method="post" action="controller?page=AjoutCommande">
         <table>
         <!--article1-->
             <tr class="pro-qté-p">
                 <th class="produit">Produit</th>
                 <th></td>
                 <th class="qté">Quantité</th>
-                <th class="prix">Prix</th>
+                <th class="prix">Prix Unitaire</th>
+                <th class="totalProduit">Montant Total</th>
             </tr>
       
             
@@ -55,14 +59,15 @@
             <tr class="hr-margin">
                 <td colspan="6" class="hr-margin" ><hr></td>
             </tr>
-            <tr>
+            <tr class="product_line" data-total="<%=entry.getValue()*produit.getPrix()%>">
                 <td class="image" ><img src="photoh/<%=produit.getPhoto()%>" alt=""></td>
                 <td> <p class="art-name"><%=produit.getNom()%></p>
                     <a href="controller?page=panier&action=delete&id=<%=produit.getId()%>" class="delete">Supprimer</a>
                 </td>
                 <td></td>
-                <td class="quantité"><input type="number" value="<%=entry.getValue()%>"></td>
+                <td class="quantité"><input data-price="<%=produit.getPrix()%>" class="qte_product" data-id="<%=produit.getId()%>" type="number" value="<%=entry.getValue()%>"></td>
                 <td class="prixx"><%=produit.getPrix()%>$</td>
+                <td id="montant_produit_<%=produit.getId()%>"><%=entry.getValue()*produit.getPrix()%>$</td>
                     
             </tr>
                    <%
@@ -83,8 +88,13 @@
             <tr class="total-p">
                      <td  colspan="4" id="total" >Total</td>
                      <td id="p-total"><%= total %>$</td>
-                     <td><button type="submit"><span>Commander</span></button></td>
+                     <%if((User) session.getAttribute("UserConnecte")==null){ %>
+                     	<td><button type="submit"><span>Commander</span></button></td>
+                     <%}else{ %>
+                     	<td><div id="paypal-button-container"></div></td>
+                     <%} %>
             </tr>
+            
         </table>
     <form/>
      <%}else{%>
@@ -114,10 +124,46 @@
     
          </div>
          <!--fin 30%off monochest n+1page-->
-         <%@
+            <script src="https://www.paypal.com/sdk/js?client-id=AftX3mgELqCAq0bDhRWcyvXiuaNSCGqnSI0STNK-wJ92Bt7dnUoGiMbhyWgvUCK525Q0OOnGCJ-W4Jlo"></script>
+    <script>
+    	if(document.getElementById("paypal-button-container")){
+    		paypal.Buttons({
+    	    	 style: {
+    	    		    layout: 'horizontal',
+    	    		    color:  'silver',
+    	          },
+    	    	  createOrder: function(data, actions) {
+    	    	  	var tt= Number($("#p-total").text().split('$')[0]);
+    	    	    return actions.order.create({
+    	    	      purchase_units: [{
+    	    	        amount: {
+    	    	          value: tt
+    	    	        }
+    	    	      }]
+    	    	    });
+    	    	  },
+    	    	  onApprove: function(data, actions) {
+    	    	    // This function captures the funds from the transaction.
+    	    	    return actions.order.capture().then(function(details) {
+    	    	        $("#formPanier").submit();
+    	    	    });
+    	    	  },
+    	    	  onError: function (err) {
+    	    		 alert("Une erreur est survenue! Veillez vérifier vos moyens de paiement.");
+    	    		  },
+    	          onCancel: function (data) {
+    	        	 alert("Une erreur est survenue! Veillez vérifier vos moyens de paiement.");
+    	          }	  
+    	    	}).render('#paypal-button-container');
+    	}
+    
+    
+    </script>
+    </body>
+     <%@
    include file ="footer.jsp"
 %>
-    </body>
+
 </html>
 
 

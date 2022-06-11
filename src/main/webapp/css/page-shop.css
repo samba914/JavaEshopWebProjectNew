@@ -18,7 +18,9 @@ body {line-height:1.5;
     }
 
 
-
+.serach{
+	text-align:center;
+}
 /*pub*/
     .pub{
         background-image: url("../background/shop_pub.jpg");
@@ -58,16 +60,13 @@ body {line-height:1.5;
     max-width: 1900px;
     margin: auto;
     background-color: rgba(237, 237, 237, 0.81);
-    overflow: hidden;
+    
+    text-align: -webkit-center;
 }
 
 
 .article{
-    display: block;
-    margin-left: auto;
-    margin-top: auto;   
-    top: auto;
-    left:auto;
+    display: inline-block;
 }
 .lien-ban{
     text-decoration: none;

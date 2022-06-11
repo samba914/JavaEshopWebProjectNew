@@ -21,18 +21,20 @@ public class User {
     private int tel;
     private String adr;
     private int id;
+    private String role;
     
     public User() {
         
     }
 
-    public User(String prenom, String nom, String email, String mdp, int tel, String adr) {
+    public User(String prenom, String nom, String email, String mdp, int tel, String adr,String role) {
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;
         this.mdp = mdp;
         this.tel = tel;
         this.adr = adr;
+        this.role=role;
     }
 
     public static int getNBUSER() {
@@ -49,6 +51,9 @@ public class User {
 
     public String getEmail() {
         return email;
+    }
+    public String getRole() {
+    	return role;
     }
 
     public String getMdp() {

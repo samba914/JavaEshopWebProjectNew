@@ -5,6 +5,8 @@
  */
 package business.model;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,22 +15,30 @@ import java.util.Map;
  * @author p1422359
  */
 public class Commande {
-    private static int NBCOMMANDE;
     private int num;
     private int idUser;
+    private Date date;
+    private String etat;
     private  Map<Integer, Integer> listeProduit;
  
 
-    public Commande() {
-        NBCOMMANDE++;
-        this.num = NBCOMMANDE;
-    }
-    
     public Commande(int idUser, Map<Integer, Integer> listeProduit) {
-        NBCOMMANDE++;
-        this.num = NBCOMMANDE;
         this.idUser=idUser;
         this.listeProduit=listeProduit;
+       
+    }
+    public Commande(int num,int idUser, Map<Integer, Integer> listeProduit) {
+        this.num = num;
+        this.idUser=idUser;
+        this.listeProduit=listeProduit;
+       
+    }
+    public Commande(int num,int idUser,Date date,String etat) {
+        this.num = num;
+        this.idUser=idUser;
+        this.date=date;
+        this.etat=etat;
+        this.listeProduit=new HashMap<>();
        
     }
 
@@ -36,7 +46,7 @@ public class Commande {
  
 
  
-
+   
     public Map<Integer, Integer>getListeProduit() {
         return listeProduit;
     }
@@ -45,7 +55,9 @@ public class Commande {
         this.listeProduit = listeProduit;
     }
 
-
+    public void addProduct(int id,int quantity) {
+    	this.listeProduit.put(id,quantity);
+    }
   
 
     public int getIdUser() {
@@ -58,6 +70,15 @@ public class Commande {
 
     public int getNum() {
         return num;
+    }
+    public String getEtat() {
+    	return etat;
+    }
+    public Date getDate() {
+    	return date;
+    }
+    public void setDate(Date date) {
+    	this.date=date;
     }
 
     public void setNum(int num) {

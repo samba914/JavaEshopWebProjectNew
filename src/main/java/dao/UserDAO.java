@@ -59,6 +59,35 @@ public void insererUser(User user) //penser a changer le type retourné
         // return ce que l'on veut
         
     }
+	public User getUserbyId(int id) {
+		User user=null;
+		try
+        {
+            Connection con = dao.ConnectionDB.getInstance();
+            String reqParam="SELECT * from User where id=?";
+             PreparedStatement pstmt = con.prepareStatement(reqParam);
+             pstmt.setInt(1,id);
+             pstmt.execute();
+            
+            resultat = pstmt.executeQuery();
+            
+            while(resultat.next())
+            {
+            	String prenom=resultat.getString("prenom");       
+            	String nom=resultat.getString("nom");
+            	String email=resultat.getString("email");
+            	String mdp=resultat.getString("mdp");
+                int tel=resultat.getInt("tel");
+                String adr=resultat.getString("adr");
+                id=resultat.getInt("id");
+               user= new User(prenom, nom, email,mdp,tel,adr,resultat.getString("role"));
+               user.setId(id);
+            }
+        }catch (SQLException ex) {
+            System.out.println("Erreur ! : " + ex);
+        }
+		return user;
+	}
 
     public User getVerifUser(String emailUser,String mdpUser)  //penser a changer le type retourné
     {
@@ -90,7 +119,7 @@ public void insererUser(User user) //penser a changer le type retourné
                       tel=resultat.getInt("tel");
                       adr=resultat.getString("adr");
                       id=resultat.getInt("id");
-                     user= new User(prenom, nom, email,mdp,tel,adr);
+                     user= new User(prenom, nom, email,mdp,tel,adr,resultat.getString("role"));
                      user.setId(id);
                 
             }  
