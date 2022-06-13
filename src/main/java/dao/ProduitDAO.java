@@ -113,4 +113,23 @@ public List<Produit> listeProduit() throws SQLException //penser a changer le ty
     
     
     }
+    
+    public void insertProduit (Produit p) {
+    	
+    	try {
+            Connection con = dao.ConnectionDB.getInstance();
+            PreparedStatement stm = con.prepareStatement("INSERT INTO Produit (nom, prix, photo, stock) VALUES (?, ?, ?, ?)");
+            stm.setString(1,p.getNom());
+            stm.setInt(2,p.getPrix());
+            stm.setString(3,p.getPhoto());
+            stm.setInt(4,0); //bizarre
+            
+            resultat = stm.executeQuery();
+            
+    	}
+        catch (SQLException ex) {
+            System.out.println("Erreur dans l'insertion ! : " + ex);
+        }
+    	
+    }
 }

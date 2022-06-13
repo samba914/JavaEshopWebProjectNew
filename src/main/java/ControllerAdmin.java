@@ -8,15 +8,25 @@ import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+import javax.servlet.annotation.*;
 
 import business.logic.ServicesMagasin;
 import business.model.Commande;
+import business.model.Produit;
+import dao.CommandeDAO;
+import dao.ConnectionDB;
+import dao.ProduitDAO;
 
 @WebServlet(urlPatterns = { "/controlleradmin" })
+@MultipartConfig(
+		  fileSizeThreshold = 1024 * 1024 * 1, // 1 MB
+		  maxFileSize = 1024 * 1024 * 10,      // 10 MB
+		  maxRequestSize = 1024 * 1024 * 100   // 100 MB
+		)
 public class ControllerAdmin extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException, InterruptedException {
@@ -33,6 +43,50 @@ public class ControllerAdmin extends HttpServlet {
 				RequestDispatcher rd = request.getRequestDispatcher(page + ".jsp");
 				rd.forward(request, response);
 			}break;
+			
+			case "ajoutProduit" :{
+
+				
+				if (request.getMethod().equalsIgnoreCase("POST")) {
+
+					Produit p = new Produit(); 
+
+					p.setNom(request.getParameter("nomProduit"));
+
+					
+					p.setPrix(Integer.parseInt(request.getParameter("prixProduit")));
+					Part filePart = request.getPart("imageProduit");
+				    String fileName =  filePart.getSubmittedFileName();
+					p.setPhoto(fileName);
+				    
+					filePart.write("C:\\Users\\Mohamed\\git\\JavaEshopWebProjectNew\\src\\main\\webapp\\photoh\\" + fileName);
+				    
+
+					ProduitDAO pDAO = new ProduitDAO(ConnectionDB.getInstance()); 
+
+
+					pDAO.insertProduit(p);
+
+					page = "listProduit" ;
+				}
+				else if (request.getMethod().equalsIgnoreCase("GET")) {
+					RequestDispatcher rd = request.getRequestDispatcher(page + ".jsp");
+					rd.forward(request, response);
+					break;
+				}
+
+				
+
+			}
+			case "listProduit" :{
+				ProduitDAO pDAO = new ProduitDAO(ConnectionDB.getInstance()); 
+				List<Produit> listp = pDAO.listeProduit() ;
+				request.setAttribute("listProduit", listp);
+				
+				RequestDispatcher rd = request.getRequestDispatcher(page + ".jsp");
+				rd.forward(request, response);
+			}break;
+			
 			default: {
 				RequestDispatcher rd = request.getRequestDispatcher("index" + ".jsp");
 				rd.forward(request, response);
@@ -42,7 +96,7 @@ public class ControllerAdmin extends HttpServlet {
 			}
 		
 		}catch(Exception e) {
-			System.out.println("");
+			System.out.println(e);
 		}
 	}
 	/**
