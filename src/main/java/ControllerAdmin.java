@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import business.logic.ServicesMagasin;
+import business.logic.ServicesUser;
 import business.model.Commande;
+import business.model.User;
 
 @WebServlet(urlPatterns = { "/controlleradmin" })
 public class ControllerAdmin extends HttpServlet {
@@ -30,6 +32,25 @@ public class ControllerAdmin extends HttpServlet {
 				ServicesMagasin service = new ServicesMagasin();
 				liste = service.getListeCommande();
 				request.setAttribute("listeCommande", liste);
+				RequestDispatcher rd = request.getRequestDispatcher(page + ".jsp");
+				rd.forward(request, response);
+			}break;
+			case "AdminShowCommande": {
+				int idCommande = Integer.parseInt(request.getParameter("id"));
+				if(request.getParameter("etat")!=null) {
+					String etat = request.getParameter("etat");
+					ServicesMagasin service = new ServicesMagasin();
+					service.updateCommandeEtat(idCommande, etat);
+				}
+				List<Commande> liste = new ArrayList<>();
+				ServicesMagasin service = new ServicesMagasin();
+				liste = service.getListeCommande();
+				ServicesUser serviceUser = new ServicesUser();
+				
+				Commande commandeTosee= service.getCommandeById(liste, idCommande);
+				User user= serviceUser.getUserById(commandeTosee.getIdUser());
+				request.setAttribute("user",user );
+				request.setAttribute("commande",commandeTosee );
 				RequestDispatcher rd = request.getRequestDispatcher(page + ".jsp");
 				rd.forward(request, response);
 			}break;

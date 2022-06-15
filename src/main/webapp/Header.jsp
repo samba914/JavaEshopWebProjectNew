@@ -27,15 +27,12 @@
                 <div class="lvnav1">
                  <a class="lnav" href="controller?page=index" >Accueil</a>
                 <a class="lnav" href="controller?page=page-shop">Boutique</a>
-            
-                <% if((User) session.getAttribute("UserConnecte")!=null){ %>
-                	<a class="lnav" href="controller?page=MesCommandes">Commandes</a>
-                        <a class="lnav" href="controller?page=Deconnexion">Deconnexion</a>
-                <%}%>
                 
                    <% if((User) session.getAttribute("UserConnecte")==null){ %>
                             <a class="link_Icon" href="controller?page=Connexion"><i class="fa fa-user" aria-hidden="true"></i></a>
                  <%}else if(((User) session.getAttribute("UserConnecte")).getRole()!=null && ((User) session.getAttribute("UserConnecte")).getRole().equals("admin")){%>
+                 		<a class="lnav" href="controller?page=MesCommandes">Commandes</a>
+                        <a class="lnav" href="controller?page=Deconnexion">Deconnexion</a>
             			<a class="link_Icon" href="controlleradmin?page=CommandeViewAdmin"><i class="fa fa-lock" aria-hidden="true"></i></a>
             	<%} %>
                 <a class="link_Icon" href="controller?page=panier"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>

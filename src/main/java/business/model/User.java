@@ -18,7 +18,7 @@ public class User {
     private String nom;
     private String email;
     private String mdp;
-    private int tel;
+    private long tel;
     private String adr;
     private int id;
     private String role;
@@ -27,7 +27,7 @@ public class User {
         
     }
 
-    public User(String prenom, String nom, String email, String mdp, int tel, String adr,String role) {
+    public User(String prenom, String nom, String email, String mdp, long tel, String adr,String role) {
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;
@@ -60,7 +60,7 @@ public class User {
         return mdp;
     }
 
-    public int getTel() {
+    public long getTel() {
         return tel;
     }
 

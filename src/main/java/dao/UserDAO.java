@@ -46,7 +46,7 @@ public void insererUser(User user) //penser a changer le type retourné
             pstmt.setString(2,user.getNom());
             pstmt.setString(3,user.getEmail());
             pstmt.setString(4,user.getMdp());
-            pstmt.setInt(5,user.getTel());
+            pstmt.setLong(5,user.getTel());
             pstmt.setString(6,user.getAdr());
 	    pstmt.execute();
                 
@@ -77,7 +77,7 @@ public void insererUser(User user) //penser a changer le type retourné
             	String nom=resultat.getString("nom");
             	String email=resultat.getString("email");
             	String mdp=resultat.getString("mdp");
-                int tel=resultat.getInt("tel");
+                long tel=resultat.getLong("tel");
                 String adr=resultat.getString("adr");
                 id=resultat.getInt("id");
                user= new User(prenom, nom, email,mdp,tel,adr,resultat.getString("role"));
@@ -96,7 +96,7 @@ public void insererUser(User user) //penser a changer le type retourné
          String nom;
          String email;
          String mdp;
-         int tel;
+         long tel;
          String adr;
          int id;
         try
@@ -116,7 +116,7 @@ public void insererUser(User user) //penser a changer le type retourné
                       nom=resultat.getString("nom");
                       email=resultat.getString("email");
                       mdp=resultat.getString("mdp");
-                      tel=resultat.getInt("tel");
+                      tel=resultat.getLong("tel");
                       adr=resultat.getString("adr");
                       id=resultat.getInt("id");
                      user= new User(prenom, nom, email,mdp,tel,adr,resultat.getString("role"));

@@ -30,7 +30,10 @@
                 <% if((User) session.getAttribute("UserConnecte")!=null){ %>
                 	<a class="lnav" href="controlleradmin?page=CommandeViewAdmin">Commandes</a>
                         <a class="lnav" href="controller?page=Deconnexion">Deconnexion</a>
-                <%}%>
+                           
+                <%}else{%>
+                	 <a class="link_Icon" href="controller?page=Connexion"><i class="fa fa-user" aria-hidden="true"></i></a>
+                <%} %>
                 
                
                 </div>

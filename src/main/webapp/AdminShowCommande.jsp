@@ -8,45 +8,61 @@
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.Map"%>
 <%@page import="business.model.Commande"%>
+<%@page import="business.model.User"%>
 <%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@
-   include file="Header.jsp"%>
+   include file="HeaderAdmin.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-		<script src="js/MesCommandes.js"></script>
+		<script src="js/AdminShowCommande.js"></script>
 		<link href="css/MesCommandes.css" rel="stylesheet" type="text/css" />
 		<link href="css/panier.css" rel="stylesheet" type="text/css"/>
-		<title>Mes Commandes</title>
+		<title>Commande</title>
 	</head>
 <body>
 <div style="margin-left:10%">
 	
-	<%
-        List<Commande> listeCommande=(ArrayList<Commande>) request.getAttribute("listeCommande");
-        %>
 
-	<h2>Mes commandes</h2>
-	<select id="produit_list">
-
-		<% for(Commande commande:listeCommande){ %>
-		<option value="<%=commande.getNum()%>" <%=(Integer)(request.getAttribute("idCommande"))==commande.getNum()?"selected":"" %>  >
-			<%= new SimpleDateFormat("dd-MM-yyyy").format(commande.getDate())+" Commande: "+commande.getNum()%>
-		</option>
-
-		<% }%>
-	</select>
-	<%if((Integer)(request.getAttribute("idCommande"))==0 && listeCommande.size()==0){%>
-	<p>Aucune commande</p>
-	<%}else{
+		<%
 	   	Commande commande =(Commande) request.getAttribute("commande");
+		User user = (User) request.getAttribute("user");
 	    Iterator<Entry<Integer, Integer>> il = (commande.getListeProduit()).entrySet().iterator();
 	    int total=0;%>
-	   
+	    
+    <h4><%="Commande #"+commande.getNum()+ " "+ user.getPrenom() + " "+user.getNom()+" du "+new SimpleDateFormat("dd-MM-yyyy").format(commande.getDate()) %></h4>
+	 
+	 
+	 
+	 <div class="row mt-3">
+        <div class="col-lg-4 col-xs-3">
+            <div class="card amount" style="border: double black; width: 70%; background-color: transparent;">
+                <div class="card-body amountCard">
+                    <h4 class="card-title"><i class="fa fa-user"></i> Client</h4>
+                    <div class="text-center">
+                        <b><%=user.getPrenom() + " "+user.getNom() %></b>
+                        <p class="mb-0"><%=user.getEmail() %></p>
+                        <p class="mb-0"><%=user.getTel() %></p>
+                        <p class="mb-0"><%=user.getAdr() %></p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-xs-3" style="align-self: center;">
+      		<b>Etat :</b> 
+      		<select id="status" data-idCommande="<%=commande.getNum()%>" >
+      			<option value="En attente de validation"  <%=(commande.getEtat().equals("En attente de validation"))?"selected":"" %>  >En attente de validation</option>
+      			<option value="En cours"  <%=(commande.getEtat().equals("En cours"))?"selected":"" %> >En cours</option>
+      			<option value="Livré" <%=(commande.getEtat().equals("Livré"))?"selected":"" %> >Livré</option>
+      		</select>
+      	</div> 
+      </div> 
+      
 	<table>
 		<!--article1-->
 		<tr class="pro-qté-p">
@@ -98,7 +114,7 @@
             	
         </table>     
 	      
-	<%}%>
+	
 </div>
 </body>
 </html>
