@@ -59,7 +59,7 @@ public class ControllerAdmin extends HttpServlet {
 				    String fileName =  filePart.getSubmittedFileName();
 					p.setPhoto(fileName);
 				    
-					filePart.write("C:\\Users\\Mohamed\\git\\JavaEshopWebProjectNew\\src\\main\\webapp\\photoh\\" + fileName);
+					filePart.write("C:\\Users\\m_ala\\git\\JavaEshopWebProjectNew\\src\\main\\webapp\\photoh\\" + fileName);
 				    
 
 					ProduitDAO pDAO = new ProduitDAO(ConnectionDB.getInstance()); 
