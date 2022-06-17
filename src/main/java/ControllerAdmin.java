@@ -15,11 +15,14 @@ import javax.servlet.http.Part;
 import javax.servlet.annotation.*;
 
 import business.logic.ServicesMagasin;
+import business.logic.ServicesUser;
 import business.model.Commande;
 import business.model.Produit;
 import dao.CommandeDAO;
 import dao.ConnectionDB;
 import dao.ProduitDAO;
+
+import business.model.User;
 
 @WebServlet(urlPatterns = { "/controlleradmin" })
 @MultipartConfig(
@@ -43,7 +46,7 @@ public class ControllerAdmin extends HttpServlet {
 				RequestDispatcher rd = request.getRequestDispatcher(page + ".jsp");
 				rd.forward(request, response);
 			}break;
-			
+
 			case "ajoutProduit" :{
 
 				
@@ -87,6 +90,26 @@ public class ControllerAdmin extends HttpServlet {
 				rd.forward(request, response);
 			}break;
 			
+
+			case "AdminShowCommande": {
+				int idCommande = Integer.parseInt(request.getParameter("id"));
+				if(request.getParameter("etat")!=null) {
+					String etat = request.getParameter("etat");
+					ServicesMagasin service = new ServicesMagasin();
+					service.updateCommandeEtat(idCommande, etat);
+				}
+				List<Commande> liste = new ArrayList<>();
+				ServicesMagasin service = new ServicesMagasin();
+				liste = service.getListeCommande();
+				ServicesUser serviceUser = new ServicesUser();
+				
+				Commande commandeTosee= service.getCommandeById(liste, idCommande);
+				User user= serviceUser.getUserById(commandeTosee.getIdUser());
+				request.setAttribute("user",user );
+				request.setAttribute("commande",commandeTosee );
+				RequestDispatcher rd = request.getRequestDispatcher(page + ".jsp");
+				rd.forward(request, response);
+			}break;
 			default: {
 				RequestDispatcher rd = request.getRequestDispatcher("index" + ".jsp");
 				rd.forward(request, response);

@@ -31,8 +31,10 @@
                 	<a class="lnav" href="controlleradmin?page=CommandeViewAdmin">Commandes</a>
                         <a class="lnav" href="controller?page=Deconnexion">Deconnexion</a>
                         <a class="lnav" href="controlleradmin?page=listProduit">Produits</a>
-                <%}%>
-                
+                           
+                <%}else{%>
+                	 <a class="link_Icon" href="controller?page=Connexion"><i class="fa fa-user" aria-hidden="true"></i></a>
+                <%} %>  
                
                 </div>
             </div>     

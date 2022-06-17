@@ -96,6 +96,17 @@ public class CommandeDAO {
 		}
 		return lastCommandeNum;
 	}
+	public void updateCommandeEtat(int id, String etat){
+		try {
+			Connection con = db;
+			PreparedStatement stm2 = con.prepareStatement("update commande set etat=? where num=?");
+			stm2.setInt(2, id);
+			stm2.setString(1, etat);
+			stm2.executeQuery();
+		}catch (SQLException ex) {
+				System.out.println("Erreur ! : " + ex);
+	    }
+	}
 
 	public List<Commande> getListeCommande() 
 	{

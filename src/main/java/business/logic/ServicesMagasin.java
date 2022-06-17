@@ -35,6 +35,11 @@ public class ServicesMagasin {
             CommandeDAO commandeDao=new CommandeDAO(ConnectionDB.getInstance());
             List<Commande>  liste= commandeDao.getListeCommande();
             return liste;
+        }
+        public void updateCommandeEtat(int id, String etat){
+            CommandeDAO commandeDao=new CommandeDAO(ConnectionDB.getInstance());
+            commandeDao.updateCommandeEtat(id,etat);
+           
        }
         
         public Produit voirProduit(int idProduit){
