@@ -44,12 +44,13 @@ public List<Produit> listeProduit() throws SQLException //penser a changer le ty
         {
      
             Connection con = db;
-            PreparedStatement stm = con.prepareStatement("SELECT * from Produit");
+            PreparedStatement stm = con.prepareStatement("SELECT * from Produit order by  stock desc");
             ResultSet resultat = stm.executeQuery();
               String nom;
               int id;
               String photo;
               int prix;
+              int stock;
             
             
             while(resultat.next())
@@ -58,8 +59,9 @@ public List<Produit> listeProduit() throws SQLException //penser a changer le ty
                 photo=resultat.getString("photo");
                 id=resultat.getInt("id");
                 prix=resultat.getInt("prix");
-                
-                Produit produit= new Produit(nom,photo,prix);
+                stock=resultat.getInt("stock");
+                Produit produit= new Produit(nom,photo,prix,stock);
+            
                 produit.setId(id);
                 listeproduit.add(produit);
                 
@@ -81,13 +83,14 @@ public List<Produit> listeProduit() throws SQLException //penser a changer le ty
         {
      
             Connection con = dao.ConnectionDB.getInstance();
-            PreparedStatement stm = con.prepareStatement("SELECT * from Produit where id=?");
+            PreparedStatement stm = con.prepareStatement("SELECT * from Produit where id=? ");
             stm.setInt(1,idProduit);
             resultat = stm.executeQuery();
               String nom;
               int id;
               String photo;
               int prix;
+              int stock;
             
             
             while(resultat.next())
@@ -96,8 +99,8 @@ public List<Produit> listeProduit() throws SQLException //penser a changer le ty
                 photo=resultat.getString("photo");
                 id=resultat.getInt("id");
                 prix=resultat.getInt("prix");
-                
-                produit= new Produit(nom,photo,prix);
+                stock=resultat.getInt("stock");
+                produit= new Produit(nom,photo,prix,stock);
                 produit.setId(id);
                 
                 
@@ -113,6 +116,26 @@ public List<Produit> listeProduit() throws SQLException //penser a changer le ty
     
     
     }
+
+    
+    public void updateProduit (Produit p) {
+    	
+    	try {
+            Connection con = dao.ConnectionDB.getInstance();
+            PreparedStatement stm = con.prepareStatement("Update produit set nom=?, prix=?,stock=? where id=?;");
+            stm.setString(1,p.getNom());
+            stm.setInt(2,p.getPrix());
+            stm.setInt(3,p.getStock()); 
+            stm.setInt(4,p.getId()); 
+            
+            resultat = stm.executeQuery();
+            
+    	}
+        catch (SQLException ex) {
+            System.out.println("Erreur dans l'update ! : " + ex);
+        }
+    	
+    }
     
     public void insertProduit (Produit p) {
     	
@@ -122,7 +145,7 @@ public List<Produit> listeProduit() throws SQLException //penser a changer le ty
             stm.setString(1,p.getNom());
             stm.setInt(2,p.getPrix());
             stm.setString(3,p.getPhoto());
-            stm.setInt(4,0); //bizarre
+            stm.setInt(4,p.getStock()); //bizarre
             
             resultat = stm.executeQuery();
             

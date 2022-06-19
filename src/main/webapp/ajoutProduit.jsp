@@ -33,7 +33,7 @@
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</form>
 			</div>
-			<div class="col-2"></div>
+		
 		</div>
 	</div>
 

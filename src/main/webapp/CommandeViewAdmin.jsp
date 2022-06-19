@@ -26,7 +26,7 @@
 	<title>Insert title here</title>
 </head>
 <body>
-<div class="mt-3" style="padding:4%;background-color: rgba(237, 237, 237, 0.81);">
+<div class="mt-3" style="padding:4%;background-image: url('background/hero_frosty.jpg');">
 	<div class="card shadow p-3 mb-5 bg-white rounded" >
 		<div class="card-header">
 	    <ul class="nav nav-tabs card-header-tabs" role="tablist">

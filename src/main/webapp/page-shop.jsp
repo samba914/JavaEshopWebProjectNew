@@ -39,7 +39,7 @@
                   <table class="inline">  
                   <form class="lien-ban" action="controller?page=page-shop&action=ajout" method="post">
                         <tr>
-                            <td colspan="2"><img  class="band" src="<%="photoh/"+produit.getPhoto()%>" alt=""></td>
+                            <td colspan="2"><img  class="band" src="<%="photoh/"+produit.getPhoto()%>" alt="" style="<%= (produit.getStock()==0)? "filter:brightness(70%)":""%>"></td>
                                
                               </tr>
                               <tr class="poliband">
@@ -48,11 +48,15 @@
                                  <input type="hidden" name="produit_panier" value=<%=produit.getId()%> />
                               </tr>
                               <tr >
-                                  
-                                <td class="band-buy" colspan="2">
-                                    <input type="submit" value="Acheter" class="t-buy-now"/>
-                                </td>
-                             
+                                <% if(produit.getStock()!=0){ %> 
+	                                <td class="band-buy" colspan="2">
+	                                    <button type="submit" class="t-buy-now">Ajouter <i class="fa fa-shopping-cart" aria-hidden="true"></i> </button>
+	                                </td>
+       							<%}else{%>
+       								<td class="band-buy" colspan="2">
+	                                    <button disabled type="submit" class="t-buy-now-rup" style="color:red">Rupture stock</button>
+	                                </td>
+       							<%} %>
                                
                               </tr>
                         </form>

@@ -26,25 +26,28 @@
  * AJAX call starts with this function
  */
 function makeRequest(id,qte) {
+	 	console.log("test")
 	var xmlHttpRequest = getXMLHttpRequest();
 	xmlHttpRequest.onreadystatechange = getReadyStateHandler(xmlHttpRequest);
 	xmlHttpRequest.open("POST", "controller?page=updateQte&id="+id+"&qte="+qte, true);
-	xmlHttpRequest.setRequestHeader("Content-Type",
-			"application/x-www-form-urlencoded");
-	xmlHttpRequest.send(null);
+	xmlHttpRequest.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	     	console.log(xmlHttpRequest.send(null));
+	     	    
+	     	     	     	console.log(xmlHttpRequest)
+	
 }
 
 /*
  * Returns a function that waits for the state change in XMLHttpRequest
  */
 	function getReadyStateHandler(xmlHttpRequest) {
-	
+	     	console.log("test")
 		// an anonymous function returned
 		// it listens to the XMLHttpRequest instance
 		return function() {
 			if (xmlHttpRequest.readyState == 4) {
 				if (xmlHttpRequest.status == 200) {
-					//
+				
 				} else {
 					alert("HTTP error " + xmlHttpRequest.status + ": " + xmlHttpRequest.statusText);
 				}
@@ -64,6 +67,7 @@ function makeRequest(id,qte) {
         somme+= Number($(this).attr("data-total"));
 	});
 	$("#p-total").text(somme+"$");
+	 	console.log("dsl")
 	makeRequest(id,qte);
     
   });

@@ -47,9 +47,31 @@ public class ControllerAdmin extends HttpServlet {
 				rd.forward(request, response);
 			}break;
 
-			case "ajoutProduit" :{
+			case "updateProduit" :{
+				if (request.getMethod().equalsIgnoreCase("POST")) {
+					Produit p = new Produit(); 
+					p.setId(Integer.parseInt(request.getParameter("idProduit")));
+					p.setNom(request.getParameter("nomProduit"));
+					p.setPrix(Integer.parseInt(request.getParameter("prixProduit")));		
+					p.setStock(Integer.parseInt(request.getParameter("stockProduit")));	
+					ProduitDAO pDAO = new ProduitDAO(ConnectionDB.getInstance()); 
+					pDAO.updateProduit(p);
 
+					List<Produit> listp = pDAO.listeProduit() ;
+					request.setAttribute("listProduit", listp);
+					
+					RequestDispatcher rd = request.getRequestDispatcher("listProduit" + ".jsp");
+					rd.forward(request, response);
+					
+				}else if (request.getMethod().equalsIgnoreCase("GET")) {
+					RequestDispatcher rd = request.getRequestDispatcher(page + ".jsp");
+					rd.forward(request, response);
+					break;
+				}
 				
+		    }
+			
+			case "ajoutProduit" :{
 				if (request.getMethod().equalsIgnoreCase("POST")) {
 
 					Produit p = new Produit(); 
@@ -58,11 +80,13 @@ public class ControllerAdmin extends HttpServlet {
 
 					
 					p.setPrix(Integer.parseInt(request.getParameter("prixProduit")));
+					p.setStock(Integer.parseInt(request.getParameter("stockProduit")));
 					Part filePart = request.getPart("imageProduit");
 				    String fileName =  filePart.getSubmittedFileName();
 					p.setPhoto(fileName);
-				    
-					filePart.write("C:\\Users\\m_ala\\git\\JavaEshopWebProjectNew\\src\\main\\webapp\\photoh\\" + fileName);
+					
+					System.out.println("ici laba");
+					filePart.write("C:\\Users\\samba\\eclipse-workspace\\EshoopJavaWeb\\src\\main\\webapp\\photoh\\" + fileName);
 				    
 
 					ProduitDAO pDAO = new ProduitDAO(ConnectionDB.getInstance()); 
@@ -71,6 +95,7 @@ public class ControllerAdmin extends HttpServlet {
 					pDAO.insertProduit(p);
 
 					page = "listProduit" ;
+				
 				}
 				else if (request.getMethod().equalsIgnoreCase("GET")) {
 					RequestDispatcher rd = request.getRequestDispatcher(page + ".jsp");

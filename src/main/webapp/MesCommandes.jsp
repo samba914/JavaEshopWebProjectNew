@@ -46,6 +46,9 @@
 	   	Commande commande =(Commande) request.getAttribute("commande");
 	    Iterator<Entry<Integer, Integer>> il = (commande.getListeProduit()).entrySet().iterator();
 	    int total=0;%>
+	   <div>
+	   			<b>Etat :</b> <%= commande.getEtat() %> 
+	   </div> 
 	   
 	<table>
 		<!--article1-->

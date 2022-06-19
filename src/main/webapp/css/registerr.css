@@ -1,0 +1,14 @@
+@font-face
+{
+    font-family:"Poppins-Regular";
+    src: url("../police/Poppins-Regular.ttf");
+    font-family: "Raleway-Regular";
+    src: url("../police/Raleway-Regular.ttf")
+}
+
+#page_body {
+    font-family: "Poppins-Regular", Times, serif, arial, sans-serif;
+    padding:4%;background-color: rgba(237, 237, 237, 0.81);
+    background-image: url("../background/hero_frosty.jpg");
+    
+}

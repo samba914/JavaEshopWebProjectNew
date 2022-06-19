@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="css/footer.css" rel="stylesheet" type="text/css"/>
+        <link href="css/footer_new.css" rel="stylesheet" type="text/css"/>
         <title>JSP Page</title>
     </head>
     <body>
@@ -83,7 +83,7 @@
      <div class="container-footer">
             <div class="footer">
                  <div class="copyright">
-                     © 2018 Corner | Réalisé par Samba Diouf
+                     © 2022 Corner | Réalisé par Boss Team
                  </div>
 
                  <div class="information">

@@ -60,6 +60,11 @@ public class CommandeDAO {
 				stm.setDate(5, new java.sql.Date(System.currentTimeMillis()));
 				stm.setString(6, "En attente de validation");
 				stm.execute();
+				
+				PreparedStatement stm2=con.prepareStatement("update produit set stock=stock-? where id=?");
+				stm2.setInt(1,entry.getValue() );
+				stm2.setInt(2, entry.getKey());
+				stm2.execute();
 
 			}
 

@@ -15,6 +15,7 @@ public class Produit {
     private int id;
     private String photo;
     private int prix;
+    private int stock;
 
     
     public Produit(){
@@ -26,6 +27,14 @@ public class Produit {
      
         this.photo = photo;
         this.prix = prix;
+        this.stock=0;
+    }
+    public Produit(String nom, String photo, int prix, int stock) {
+        this.nom = nom;
+     
+        this.photo = photo;
+        this.prix = prix;
+        this.stock=stock;
     }
     
     public int getPrix() {
@@ -34,6 +43,14 @@ public class Produit {
 
     public void setPrix(int prix) {
         this.prix = prix;
+    }
+    
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
 

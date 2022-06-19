@@ -33,7 +33,7 @@ public class ConnectionDB {
         Properties props = new Properties();
 		try{
 		
-        	   url = "jdbc:mariadb://localhost:3306/eShoopProject";
+        	   url = "jdbc:mariadb://localhost:3308/eShoopProject";
 	   			userName = "root";
 	   			 password = "Douldoul1";
 	   			 driver= "org.mariadb.jdbc.Driver";
