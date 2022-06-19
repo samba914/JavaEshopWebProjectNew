@@ -1,8 +1,4 @@
-<%-- 
-    Document   : register
-    Created on : 15 janv. 2020, 15:14:48
-    Author     : p1812347
---%>
+
 <%@
    include file ="Header.jsp"
 %>

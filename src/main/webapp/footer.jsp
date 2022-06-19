@@ -1,8 +1,3 @@
-<%-- 
-    Document   : footer
-    Created on : 15 janv. 2020, 15:15:02
-    Author     : p1812347
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

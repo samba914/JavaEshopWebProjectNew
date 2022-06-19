@@ -1,8 +1,4 @@
-<%-- 
-    Document   : panier
-    Created on : 15 janv. 2020, 15:14:37
-    Author     : p1812347
---%>
+
 <%@page import="business.logic.ServicesMagasin"%>
 <%@page import="dao.ProduitDAO"%>
 <%@page import="dao.ConnectionDB"%>

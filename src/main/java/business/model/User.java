@@ -5,10 +5,6 @@
  */
 package business.model;
 
-/**
- *
- * @author p1422359
- */
 public class User {
 
     private static int NBUSER=0;

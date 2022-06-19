@@ -1,8 +1,3 @@
-<%-- 
-    Document   : Connexion
-    Created on : 15 janv. 2020, 15:15:23
-    Author     : p1812347
---%>
 
 <%@
    include file ="Header.jsp"

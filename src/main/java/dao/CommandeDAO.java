@@ -23,10 +23,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sql.DataSource;
 
-/**
- *
- * @author p1801454
- */
+
 public class CommandeDAO {
 
 	static int numCommande = 0;

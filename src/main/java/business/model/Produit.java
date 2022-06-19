@@ -5,10 +5,7 @@
  */
 package business.model;
 
-/**
- *
- * @author p1422359
- */
+
 public class Produit {
     
     private String nom;

@@ -10,10 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- *
- * @author p1422359
- */
 public class Commande {
     private int num;
     private int idUser;

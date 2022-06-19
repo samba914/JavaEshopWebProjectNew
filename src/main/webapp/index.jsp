@@ -1,8 +1,3 @@
-<<%-- 
-    Document   : Accueil
-    Created on : 15 janv. 2020, 15:14:15
-    Author     : p1812347
---%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="business.model.Produit"%>
 <%@page import="dao.ProduitDAO"%>
